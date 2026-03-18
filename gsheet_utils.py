@@ -29,9 +29,24 @@ def append_to_sheet(data):
     sheet = client.open_by_key(sheet_id).worksheet(sheet_name)
     # Cabeçalho correto conforme planilha (ajuste conforme sua planilha)
     header = [
-        'Data/Hora Envio', 'Protocolo', 'Nome', 'Gênero', 'CPF', 'Nascimento', 'Whatsapp', 'Email',
-        'CEP', 'Endereço', 'Número', 'Complemento', 'Bairro', 'Cidade', 'Estado',
-        'Local do Curso', 'Curso', 'Turma', 'Horário', 'Data de Início', 'Encerramento', 'Endereço do Curso', 'Como Conheceu'
+        'Data Envio',
+        'Protocolo',
+        'Nome',
+        'Gênero',
+        'CPF',
+        'Nascimento',
+        'Whatsapp',
+        'Email',
+        'CEP',
+        'Bairro',
+        'Local do Curso',
+        'Curso',
+        'Turma',
+        'Horário',
+        'Data de Início',
+        'Encerramento',
+        'Endereço do Curso',
+        'Como Conheceu'
     ]
     # Só insere o cabeçalho se não existir ou estiver diferente
     existing_header = sheet.row_values(1)
@@ -42,7 +57,7 @@ def append_to_sheet(data):
     # Garante que os dados estejam na ordem do cabeçalho
     # Espera-se que 'data' já venha na ordem correta (igual ao header, exceto Data/Hora Envio)
     from datetime import datetime
-    now = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+    now = datetime.now().strftime('%d/%m/%Y')
     data_to_save = [now] + data
     # Adiciona na próxima linha disponível
     next_row = len(sheet.get_all_values()) + 1
