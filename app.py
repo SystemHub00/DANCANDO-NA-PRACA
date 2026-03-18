@@ -237,8 +237,23 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <div style="color:#7a7a7a;font-size:0.98em;margin-top:8px;">Guarde este número para acompanhar sua inscrição</div>
         </div>
         <div class="info-contato">
-            Em breve entraremos em contato via WhatsApp no número <b>{{ session['whatsapp'] if session['whatsapp'] else '' }}</b>.<br>
-            Fique atenta(o) às mensagens e ligações!
+            <div style="margin-bottom: 18px;">
+                <b>Confirmação de participação:</b><br>
+                <span style="display: block; margin: 10px 0;">
+                    <input type="checkbox" checked disabled style="accent-color:#de254b; margin-right:6px;"> Confirmo que resido na Ilha do Governador ou região e tenho interesse em participar do evento.
+                </span>
+                Confirmo que todas as informações fornecidas são verdadeiras e estou de acordo com os termos de participação.<br>
+                Autorizo o uso dos meus dados para fins de inscrição e contato relacionado ao curso.<br>
+                Também autorizo o uso da minha imagem para divulgação nos canais de comunicação e redes sociais do projeto e da Prefeitura do Rio de Janeiro.
+            </div>
+            <div style="margin-bottom: 10px;">
+                <b>Ao confirmar você declara ciência de que:</b>
+                <ul style="color:#de254b; margin: 8px 0 0 18px;">
+                    <li>O evento é totalmente gratuito</li>
+                    <li>Em caso de chuva será cancelado</li>
+                    <li>Os dados serão usados apenas para inscrição</li>
+                </ul>
+            </div>
         </div>
         <div class="btns">
             <a class="btn-whatsapp" href="https://wa.me/?text=Acabei%20de%20me%20inscrever%20em%20um%20curso%20gratuito%20incr%C3%ADvel!%20Garanta%20sua%20vaga%20tamb%C3%A9m%20e%20venha%20transformar%20sua%20carreira%20comigo.%20Inscreva-se%20aqui:%20https://dancando-na-praca.onrender.com" target="_blank" style="display: flex; align-items: center; justify-content: center; min-width: 220px; min-height: 48px; font-size: 1.13em; font-weight: 800; border-radius: 18px; border: none; box-shadow: 0 2px 12px #de254b33; letter-spacing: 0.5px; transition: background 0.2s, box-shadow 0.2s, transform 0.1s; outline: none; text-transform: uppercase; text-align: center; margin: 0 auto 18px auto; background: #de254b; color: #fff; cursor: pointer; text-decoration: none;">&#128241; COMPARTILHAR NO WHATSAPP</a>
@@ -1204,7 +1219,6 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
         <div class="progress-bar">
             <div class="progress" style="width: 33%;"></div>
         </div>
-        <div class="inscricao-numero">🎉 Você é a inscrição nº <b>361</b>!</div>
         <h2 style="color: #de254b !important; text-shadow: none !important; background: none !important;">Dados Pessoais</h2>
         <p class="inscricao-sub">Preencha seus dados para começarmos sua inscrição</p>
         <form id="form-inscricao" method="POST" action="/inscricao" autocomplete="off">
@@ -1304,7 +1318,7 @@ TEMPLATE_INDEX = '''
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOVIMENTA</title>
+    <title>FGM</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/assistant.css">
     <link href="https://fonts.googleapis.com/css2?family=Wise:wght@400;700;900&display=swap" rel="stylesheet">
@@ -1486,10 +1500,10 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
     <main>
         <section id="hero" class="hero-section" style="background: linear-gradient(120deg, #fff 60%, #de254b 100%); border-radius: 24px; box-shadow: 0 4px 24px rgba(222,37,75,0.08); padding: 36px 0 32px 0; margin-bottom: 32px;">
             <div style="text-align:center; margin-bottom: 18px;">
-                <span style="background: #de254b; color: #fff; font-weight: bold; font-size: 1.1em; padding: 8px 24px; border-radius: 24px; letter-spacing: 1px; box-shadow: 0 2px 8px #de254b22; display: inline-block;">PROJETO:<br>DANÇANDO NA PRAÇA</span>
+                <span style="background: #de254b; color: #fff; font-weight: bold; font-size: 1.05em; padding: 8px 24px; border-radius: 24px; letter-spacing: 1px; box-shadow: 0 2px 8px #de254b22; display: inline-block;">PROJETO:<br>DANÇANDO NA PRAÇA</span>
             </div>
-            <h1 style="font-size:2.5em; font-weight:900; text-align:center; margin-bottom: 10px; text-shadow: 0 2px 8px #fff, 0 1px 0 #de254b22; color:#de254b;">AULÃO DE DANÇA!</h1>
-            <h2 style="font-size:1.3em; font-weight:600; color:#de254b; text-align:center; margin-bottom: 28px;">Evento Gratuito: Aulão de Forró, Gafieira e Samba no Pé com Prof. Stefany<br>📍 Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)</h2>
+            <h1 style="font-size:2em; font-weight:900; text-align:center; margin-bottom: 10px; text-shadow: 0 2px 8px #fff, 0 1px 0 #de254b22; color:#de254b;">AULÃO DE DANÇA!</h1>
+            <h2 style="font-size:1em; font-weight:600; color:#de254b; text-align:center; margin-bottom: 22px;">Evento Gratuito: Aulão de Forró, Gafieira e Samba no Pé com Prof. Stefany<br>📍 Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)</h2>
             <div class="benefits" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 18px;">
                 <div class="benefit-carousel" style="display: flex; justify-content: center; align-items: center; margin-top: 24px; width: 100%;">
                     <div id="benefit-card" class="benefit" style="width: 100%; max-width: 700px; min-height: 80px; font-size: 1.25em; padding: 32px 32px; background: linear-gradient(90deg, #fff 80%, #eaf2fb 100%); border: 2px solid #de254b; border-radius: 22px; box-shadow: 0 4px 24px #de254b22; color: #de254b; font-weight: bold; text-align: center; transition: background 0.3s, box-shadow 0.3s, opacity 0.5s; opacity: 1;">
@@ -1521,7 +1535,7 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <a href="/inscricao" class="cta-btn">INSCREVER ME!</a>
         </div>
         <section id="cursos" class="cursos-section">
-            <p class="cursos-title">CURSOS DISPONÍVEIS (RITMOS):</p>
+            <p class="cursos-title">RITMOS</p>
             <p class="cursos-destaque"><b>FORRÓ</b> &bull; <b>GAFIEIRA</b> &bull; <b>SAMBA NO PÉ</b></p>
         </section>
         <!-- Seção de ganhos removida pois os benefícios já estão destacados acima -->
@@ -1531,7 +1545,7 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
         </section>
     </main>
     <footer style="border-top: 4px solid #de254b; background: linear-gradient(90deg, #fff 60%, #de254b 100%);">
-        <p style="color: #de254b;">&copy; 2025 MOVIMENTA. Todos os direitos reservados.</p>
+        <p style="color: #de254b;">&copy; 2020 FGM</p>
     </footer>
 </body>
 </html>
