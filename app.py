@@ -235,13 +235,13 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <div class="protocolo-label">Seu número de protocolo:</div>
             <div class="protocolo-numero">{{ protocolo }}</div>
             <div style="color:#7a7a7a;font-size:0.98em;margin-top:8px;">Guarde este número para acompanhar sua inscrição</div>
-            <a class="btn-whatsapp" href="https://wa.me/?text=Acabei%20de%20me%20inscrever%20em%20um%20curso%20gratuito%20incr%C3%ADvel!%20Garanta%20sua%20vaga%20tamb%C3%A9m%20e%20venha%20transformar%20sua%20carreira%20comigo.%20Inscreva-se%20aqui:%20https://dançando-na-praça.onrender.com" target="_blank" style="display: flex; align-items: center; justify-content: center; min-width: 220px; min-height: 48px; font-size: 1.13em; font-weight: 800; border-radius: 18px; border: none; box-shadow: 0 2px 12px #de254b33; letter-spacing: 0.5px; transition: background 0.2s, box-shadow 0.2s, transform 0.1s; outline: none; text-transform: uppercase; text-align: center; margin: 18px auto 0 auto; background: #de254b; color: #fff; cursor: pointer; text-decoration: none;">&#128241; COMPARTILHAR NO WHATSAPP</a>
         </div>
         <div class="info-contato">
             Em breve entraremos em contato via WhatsApp no número <b>{{ session['whatsapp'] if session['whatsapp'] else '' }}</b>.<br>
             Fique atenta(o) às mensagens e ligações!
         </div>
         <div class="btns">
+            <a class="btn-whatsapp" href="https://wa.me/?text=Acabei%20de%20me%20inscrever%20em%20um%20curso%20gratuito%20incr%C3%ADvel!%20Garanta%20sua%20vaga%20tamb%C3%A9m%20e%20venha%20transformar%20sua%20carreira%20comigo.%20Inscreva-se%20aqui:%20https://dancando-na-praca.onrender.com" target="_blank" style="display: flex; align-items: center; justify-content: center; min-width: 220px; min-height: 48px; font-size: 1.13em; font-weight: 800; border-radius: 18px; border: none; box-shadow: 0 2px 12px #de254b33; letter-spacing: 0.5px; transition: background 0.2s, box-shadow 0.2s, transform 0.1s; outline: none; text-transform: uppercase; text-align: center; margin: 0 auto 18px auto; background: #de254b; color: #fff; cursor: pointer; text-decoration: none;">&#128241; COMPARTILHAR NO WHATSAPP</a>
             <a class="btn-inicio" href="/" style="display: flex; align-items: center; justify-content: center; min-width: 220px; min-height: 48px; font-size: 1.18em; font-weight: 800; border-radius: 18px; border: 2px solid #de254b; background: #fff; color: #de254b; box-shadow: 0 2px 12px #de254b22; letter-spacing: 0.5px; transition: background 0.2s, box-shadow 0.2s, transform 0.1s; outline: none; text-transform: uppercase; text-align: center; margin: 0 auto;">VOLTAR AO INÍCIO</a>
         </div>
         <div class="proximos-passos">
@@ -491,8 +491,8 @@ TEMPLATE_CURSO = r'''
     <link rel="stylesheet" href="/static/assistant.css">
     <link href="https://fonts.googleapis.com/css2?family=Wise:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        html, body { height: 100%; min-height: 100vh; margin: 0; padding: 0; }
-        body { min-height: 100vh; background: linear-gradient(120deg, #fff 60%, #de254b 100%); font-family: 'Wise', 'Segoe UI', Arial, sans-serif; }
+        html, body { min-height: 100vh; height: 100%; margin: 0; padding: 0; }
+        body { min-height: 100vh; min-height: 100svh; height: 100%; width: 100vw; background: linear-gradient(120deg, #fff 60%, #de254b 100%); font-family: 'Wise', 'Segoe UI', Arial, sans-serif; background-repeat: no-repeat; background-attachment: fixed; }
         .curso-container { max-width: 480px; margin: 48px auto 0 auto; background: #fff; border-radius: 32px; box-shadow: 0 8px 40px #de254b22, 0 1.5px 8px #de254b22; padding: 48px 36px 36px 36px; text-align: center; position: relative; }
         .progress-bar { width: 100%; height: 8px; background: #fff0f3; border-radius: 8px; margin-bottom: 24px; overflow: hidden; }
         .progress { height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 8px; transition: width 0.3s; width: 99%; }
