@@ -515,10 +515,10 @@ TEMPLATE_CURSO = r'''
         .curso-sub { color: #de254b; font-size: 1.08em; margin-bottom: 24px; }
         .form-group { margin-bottom: 18px; text-align: left; width: 100%; display: flex; flex-direction: column; align-items: center; }
         .form-group label { font-weight: 600; color: #de254b; margin-bottom: 7px; font-size: 1.09em; display: block; width: 100%; max-width: 380px; }
-        .form-group input[type="text"] { border: 1.5px solid #de254b; color: #de254b; background: #fff0f3; box-shadow: 0 2px 12px #de254b22; transition: border 0.2s, box-shadow 0.2s; border-radius: 14px; padding: 13px 18px; font-size: 1.09em; font-family: 'Wise', Arial, sans-serif; outline: none; appearance: none; width: 100%; max-width: 380px; min-width: 220px; margin: 0 auto; display: block; }
+        .form-group input[type="text"] { border: 1.5px solid #de254b; color: #111 !important; background: #fff0f3; box-shadow: 0 2px 12px #de254b22; transition: border 0.2s, box-shadow 0.2s; border-radius: 14px; padding: 13px 18px; font-size: 1.09em; font-family: 'Wise', Arial, sans-serif; outline: none; appearance: none; width: 100%; max-width: 380px; min-width: 220px; margin: 0 auto; display: block; }
         .form-group input[type="text"]:focus { border: 2px solid #de254b; box-shadow: 0 4px 16px #de254b33; background: #fff; }
         .form-group input[type="text"]::placeholder { color: #de254b; opacity: 1; }
-        .curso-container input, .curso-container select { border: 1.5px solid #de254b; color: #de254b; background: #fff0f3; box-shadow: 0 2px 12px #de254b22; transition: border 0.2s, box-shadow 0.2s; border-radius: 14px; padding: 13px 18px; font-size: 1.09em; font-family: 'Wise', Arial, sans-serif; outline: none; appearance: none; width: 100%; max-width: 380px; min-width: 220px; margin: 0 auto; display: block; }
+        .curso-container input, .curso-container select { border: 1.5px solid #de254b; color: #111 !important; background: #fff0f3; box-shadow: 0 2px 12px #de254b22; transition: border 0.2s, box-shadow 0.2s; border-radius: 14px; padding: 13px 18px; font-size: 1.09em; font-family: 'Wise', Arial, sans-serif; outline: none; appearance: none; width: 100%; max-width: 380px; min-width: 220px; margin: 0 auto; display: block; }
         .curso-container input:focus, .curso-container select:focus { border: 2px solid #de254b; box-shadow: 0 4px 16px #de254b33; background: #fff; }
         .curso-container input::placeholder { color: #de254b; opacity: 1; }
         .curso-container select { appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill="%23de254b" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); background-repeat: no-repeat; background-position: right 14px center; background-size: 22px 22px; }
@@ -833,6 +833,7 @@ TEMPLATE_INSCRICAO = '''
             max-width: 400px;
         }
         .inscricao-container input, .inscricao-container select {
+            color: #111 !important;
             border: 1.5px solid #b3a0d7;
             color: #222;
             background: #f7faff;
@@ -1503,7 +1504,7 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
                 <span style="background: #de254b; color: #fff; font-weight: bold; font-size: 1.05em; padding: 8px 24px; border-radius: 24px; letter-spacing: 1px; box-shadow: 0 2px 8px #de254b22; display: inline-block;">PROJETO:<br>DANÇANDO NA PRAÇA</span>
             </div>
             <h1 style="font-size:2em; font-weight:900; text-align:center; margin-bottom: 10px; text-shadow: 0 2px 8px #fff, 0 1px 0 #de254b22; color:#de254b;">AULÃO DE DANÇA!</h1>
-            <h2 style="font-size:1em; font-weight:600; color:#de254b; text-align:center; margin-bottom: 22px;">Evento Gratuito: Aulão de Forró, Gafieira e Samba no Pé com Prof. Stefany<br>📍 Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)</h2>
+            <h2 style="font-size:1em; font-weight:400; color:#de254b; text-align:center; margin-bottom: 22px;">Evento Gratuito: Aulão de Forró, Gafieira e Samba no Pé com Prof. Stefany<br>📍 Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)</h2>
             <div class="benefits" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 18px;">
                 <div class="benefit-carousel" style="display: flex; justify-content: center; align-items: center; margin-top: 24px; width: 100%;">
                     <div id="benefit-card" class="benefit" style="width: 100%; max-width: 700px; min-height: 80px; font-size: 1.25em; padding: 32px 32px; background: linear-gradient(90deg, #fff 80%, #eaf2fb 100%); border: 2px solid #de254b; border-radius: 22px; box-shadow: 0 4px 24px #de254b22; color: #de254b; font-weight: bold; text-align: center; transition: background 0.3s, box-shadow 0.3s, opacity 0.5s; opacity: 1;">
@@ -1545,7 +1546,7 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
         </section>
     </main>
     <footer style="border-top: 4px solid #de254b; background: linear-gradient(90deg, #fff 60%, #de254b 100%);">
-        <p style="color: #de254b;">&copy; 2020 FGM</p>
+        <p style="color: #de254b;">&copy; 2020 FGM. Todos os direitos Reservados</p>
     </footer>
 </body>
 </html>
