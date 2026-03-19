@@ -453,12 +453,12 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <div class="info-box">
                 <div class="info-title">&#127891; Curso Escolhido</div>
                 <div class="info-content">
-                    <span style="color:#de254b;">Curso:</span> <span style="color:#222; font-weight:500;">{{ dados.get('curso', '') }}</span><br>
+                    <span style="color:#de254b;">Ritmo:</span> <span style="color:#222; font-weight:500;">{{ dados.get('curso', '') }}</span><br>
                     <span style="color:#de254b;">Local:</span> <span style="color:#222; font-weight:500;">{{ dados.get('local', '') }}</span><br>
-                    <span style="color:#de254b;">Turma:</span> <span style="color:#222; font-weight:500;">{{ dados.get('turma', '') }}</span><br>
+                    <span style="color:#de254b;">Evento:</span> <span style="color:#222; font-weight:500;">{{ dados.get('turma', '') }}</span><br>
                     <span style="color:#de254b;">Horário:</span> <span style="color:#222; font-weight:500;">{{ dados.get('horario', '') }}</span><br>
                     <span style="color:#de254b;">Data de Início:</span> <span style="color:#222; font-weight:500;">{{ dados.get('data_inicio', '') }}</span><br>
-                    <span style="color:#de254b;">Encerramento:</span> <span style="color:#222; font-weight:500;">{{ dados.get('encerramento', '') }}</span><br>
+                    <span style="color:#de254b;">Aviso:</span> <span style="color:#222; font-weight:500;">{{ dados.get('encerramento', '') }}</span><br>
                     <span style="color:#de254b;">Endereço:</span> <span style="color:#222; font-weight:500;">{{ dados.get('endereco_curso', '') }}</span>
                 </div>
             </div>
@@ -606,7 +606,12 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             </div>
             <div class="form-group">
                 <label for="endereco">Endereço</label>
-                <input type="text" id="endereco" name="endereco" value="📍Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)" readonly />
+                <div style="display:flex;align-items:center;gap:8px;width:100%;max-width:380px;">
+                    <input type="text" id="endereco" name="endereco" value="📍Parque Poeta Manuel Bandeira, s/n, Aterro do Cocotá, Ilha do Governador, RJ. (ANFITEATRO)" readonly style="flex:1;min-width:0;" />
+                    <button type="button" id="btn-copiar-endereco" title="Copiar endereço" style="padding:6px 10px;border-radius:6px;border:none;background:#de254b;color:#fff;cursor:pointer;font-size:1em;display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:32px;">
+                        <span style="font-size:1.1em;">&#128203;</span>
+                    </button>
+                </div>
             </div>
             <div class="form-btns" style="display:flex; flex-direction:column !important; gap:12px; width:100%; margin-top:24px;">
                 <button type="submit" class="btn-proximo">PRÓXIMO &rarr;</button>
@@ -617,6 +622,26 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
     <script>
     // Não é necessário JS dinâmico pois só há uma opção fixa para cada campo
     const enderecoInput = document.getElementById('endereco');
+    const btnCopiarEndereco = document.getElementById('btn-copiar-endereco');
+
+    if (btnCopiarEndereco && enderecoInput) {
+        btnCopiarEndereco.addEventListener('click', function() {
+            enderecoInput.select();
+            enderecoInput.setSelectionRange(0, 99999); // Para mobile
+            try {
+                document.execCommand('copy');
+                btnCopiarEndereco.innerHTML = '<span style="font-size:1.1em;">&#10003;</span>';
+                setTimeout(() => {
+                    btnCopiarEndereco.innerHTML = '<span style="font-size:1.1em;">&#128203;</span>';
+                }, 1200);
+            } catch (e) {
+                btnCopiarEndereco.innerHTML = 'Erro';
+                setTimeout(() => {
+                    btnCopiarEndereco.innerHTML = '<span style="font-size:1.1em;">&#128203;</span>';
+                }, 1200);
+            }
+        });
+    }
 
     function resetCursos() {
         cursoSelect.innerHTML = '<option value="">Selecione o curso</option>';
