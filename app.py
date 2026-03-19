@@ -1256,6 +1256,38 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <div class="form-group">
                 <label for="cep">CEP *</label>
                 <input type="text" id="cep" name="cep" placeholder="00000-000" required maxlength="9" pattern="\d{5}-\d{3}">
+                <script>
+                // Máscara automática e busca de bairro pelo CEP
+                document.addEventListener('DOMContentLoaded', function() {
+                    var cepInput = document.getElementById('cep');
+                    var bairroInput = document.getElementById('bairro');
+                    if (cepInput && bairroInput) {
+                        cepInput.addEventListener('input', function(e) {
+                            let v = cepInput.value.replace(/\D/g, '');
+                            if (v.length > 8) v = v.slice(0,8);
+                            let r = '';
+                            if (v.length > 5) r = v.replace(/(\d{5})(\d{1,3})/, '$1-$2');
+                            else r = v;
+                            cepInput.value = r;
+                            // Limpa o bairro sempre que o CEP muda
+                            bairroInput.value = '';
+                            // Quando o CEP estiver completo, busca o bairro
+                            if (v.length === 8) {
+                                fetch('https://viacep.com.br/ws/' + v + '/json/')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (!data.erro && data.bairro) {
+                                            bairroInput.value = data.bairro;
+                                        } else {
+                                            bairroInput.value = '';
+                                        }
+                                    })
+                                    .catch(() => { bairroInput.value = ''; });
+                            }
+                        });
+                    }
+                });
+                </script>
                             <script>
                             // Máscara automática para CEP (00000-000)
                             document.addEventListener('DOMContentLoaded', function() {
