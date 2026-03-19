@@ -230,7 +230,10 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <img src="/static/logo-prefeitura.png" alt="Prefeitura do Rio" class="logo-prefeitura-topo">
         </div>
     </header>
-    <div class="sucesso-container">
+        <div class="progress-bar" style="width: 100%; height: 18px; background: #fff0f3; border-radius: 12px; margin: 18px auto 0 auto; overflow: hidden; max-width: 520px;">
+            <div class="progress" style="height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 12px; transition: width 0.3s; width: 100%;"></div>
+        </div>
+        <div class="sucesso-container">
         <div class="checkmark">
             <svg viewBox="0 0 200 200">
                 <circle cx="100" cy="100" r="90" stroke="#de254b" stroke-width="16" fill="none"/>
@@ -427,11 +430,11 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <img src="/static/logo-prefeitura.png" alt="Prefeitura do Rio" class="logo-prefeitura-topo">
         </div>
     </header>
+    <div class="progress-bar" style="width: 100%; height: 18px; background: #f7faff; border-radius: 12px; margin: 18px auto 0 auto; overflow: hidden; max-width: 520px;">
+        <div class="progress" style="height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 12px; transition: width 0.3s; width: 89%;"></div>
+    </div>
     <div class="revisao-container">
         <form method="POST" action="/revisao" autocomplete="off">
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
             <div style="color:#de254b;font-weight:600;margin-bottom:18px;">&#127881; Formulário completo! Revise seus dados antes de finalizar.</div>
             <h2 style="color:#de254b;">Revise suas Informações</h2>
             <p class="revisao-sub" style="color:#de254b;">Confira se está tudo certo antes de finalizar</p>
@@ -554,12 +557,16 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
 </head>
 <body>
     <script src="/static/assistant.js"></script>
+    <script src="/static/assistant.js"></script>
     <header class="main-header">
         <div class="header-logos">
             <img src="/static/logo_fgm.png" alt="Logo FGM" class="logo">
             <img src="/static/logo-prefeitura.png" alt="Prefeitura do Rio" class="logo-prefeitura-topo">
         </div>
     </header>
+    <div class="progress-bar" style="width: 100%; height: 18px; background: #fff; border-radius: 12px; margin: 18px auto 0 auto; overflow: hidden; max-width: 520px;">
+        <div class="progress" style="height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 12px; transition: width 0.3s; width: 65%;"></div>
+    </div>
     <div class="curso-container">
         <div class="progress-bar">
             <div class="progress"></div>
@@ -947,53 +954,7 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
 </head>
 <body>
     <script src="/static/assistant.js"></script>
-    <script>
-    // Validação visual do WhatsApp (DDD 55) com balão de erro
-    document.addEventListener('DOMContentLoaded', function() {
-        var whatsappInput = document.getElementById('whatsapp');
-        var form = document.getElementById('form-inscricao');
-        if (whatsappInput && form) {
-            let erroDivWpp = document.getElementById('whatsapp-balao-erro');
-            if (!erroDivWpp) {
-                erroDivWpp = document.createElement('div');
-                erroDivWpp.className = 'balao-erro';
-                erroDivWpp.id = 'whatsapp-balao-erro';
-                whatsappInput.parentNode.appendChild(erroDivWpp);
-            }
-            erroDivWpp.style.display = 'none';
-
-            function mostrarErroWpp(msg) {
-                erroDivWpp.textContent = msg;
-                erroDivWpp.style.display = 'block';
-                whatsappInput.classList.add('erro-campo');
-            }
-            function esconderErroWpp() {
-                erroDivWpp.textContent = '';
-                erroDivWpp.style.display = 'none';
-                whatsappInput.classList.remove('erro-campo');
-            }
-            function ddd55Invalido(val) {
-                return /^\(55\)/.test(val);
-            }
-            whatsappInput.addEventListener('input', function() {
-                if (ddd55Invalido(whatsappInput.value)) {
-                    mostrarErroWpp('Não utilize o DDD 55. Informe o DDD local, ex: (21)');
-                } else {
-                    esconderErroWpp();
-                }
-            });
-            form.addEventListener('submit', function(e) {
-                if (ddd55Invalido(whatsappInput.value)) {
-                    mostrarErroWpp('Não utilize o DDD 55. Informe o DDD local, ex: (21)');
-                    whatsappInput.focus();
-                    e.preventDefault();
-                } else {
-                    esconderErroWpp();
-                }
-            });
-        }
-    });
-    </script>
+    <script src="/static/assistant.js"></script>
     <script>
     // Validação visual de CPF, Email e Idade mínima
     document.addEventListener('DOMContentLoaded', function() {
@@ -1198,17 +1159,39 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
                 nasc.value = r;
             });
         }
-        // Máscara para WhatsApp
+        // Máscara para WhatsApp e validação de DDD
         var wpp = document.getElementById('whatsapp');
         if (wpp) {
             wpp.addEventListener('input', function(e) {
                 let v = wpp.value.replace(/\D/g, '');
+                // Impede digitar DDD 55
+                if (v.length >= 2 && v.substring(0,2) === '55') {
+                    v = v.substring(2); // Remove o DDD proibido
+                }
                 if (v.length > 11) v = v.slice(0,11);
                 let r = '';
                 if (v.length > 6) r = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
                 else if (v.length > 2) r = v.replace(/(\d{2})(\d{1,5})/, '($1) $2');
                 else r = v;
                 wpp.value = r;
+                // Mensagem de erro visual se tentar digitar
+                let erroDivWpp = document.getElementById('whatsapp-balao-erro');
+                if (!erroDivWpp) {
+                    erroDivWpp = document.createElement('div');
+                    erroDivWpp.className = 'balao-erro';
+                    erroDivWpp.id = 'whatsapp-balao-erro';
+                    wpp.parentNode.appendChild(erroDivWpp);
+                }
+                erroDivWpp.style.display = 'none';
+                if (wpp.value.startsWith('(55')) {
+                    erroDivWpp.textContent = 'O DDD 55 não é permitido.';
+                    erroDivWpp.style.display = 'block';
+                    wpp.classList.add('erro-campo');
+                } else {
+                    erroDivWpp.textContent = '';
+                    erroDivWpp.style.display = 'none';
+                    wpp.classList.remove('erro-campo');
+                }
             });
         }
     });
@@ -1219,6 +1202,9 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <img src="/static/logo-prefeitura.png" alt="Prefeitura do Rio" class="logo-prefeitura-topo">
         </div>
     </header>
+    <div class="progress-bar" style="width: 100%; height: 18px; background: #fff0f3; border-radius: 12px; margin: 18px auto 0 auto; overflow: hidden; max-width: 520px;">
+        <div class="progress" style="height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 12px; transition: width 0.3s; width: 45%;"></div>
+    </div>
     <div class="inscricao-container">
         <div class="progress-bar">
             <div class="progress" style="width: 33%;"></div>
@@ -1501,6 +1487,9 @@ src="https://www.facebook.com/tr?id=26419185324388434&ev=PageView&noscript=1"
             <img src="/static/logo-prefeitura.png" alt="Prefeitura do Rio" class="logo-prefeitura-topo">
         </div>
     </header>
+    <div class="progress-bar" style="width: 100%; height: 18px; background: #fff0f3; border-radius: 12px; margin: 18px auto 0 auto; overflow: hidden; max-width: 520px;">
+        <div class="progress" style="height: 100%; background: linear-gradient(90deg, #de254b 0%, #de254b 100%); border-radius: 12px; transition: width 0.3s; width: 25%;"></div>
+    </div>
     <main>
         <section id="hero" class="hero-section" style="background: linear-gradient(120deg, #fff 60%, #de254b 100%); border-radius: 24px; box-shadow: 0 4px 24px rgba(222,37,75,0.08); padding: 36px 0 32px 0; margin-bottom: 32px;">
             <div style="text-align:center; margin-bottom: 18px;">
