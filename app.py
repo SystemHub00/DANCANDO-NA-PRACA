@@ -1559,14 +1559,14 @@ TEMPLATE_WIZARD = r'''
                 btnCopiarEndereco.addEventListener('click', async function() {
                     try {
                         await navigator.clipboard.writeText(enderecoInput.value);
-                        btnCopiarEndereco.textContent = '✅';
+                        btnCopiarEndereco.textContent = 'COPIADO ✅';
                     } catch (error) {
                         enderecoInput.select();
                         document.execCommand('copy');
-                        btnCopiarEndereco.textContent = '✅';
+                        btnCopiarEndereco.textContent = 'COPIADO ✅';
                     }
                     setTimeout(function() {
-                        btnCopiarEndereco.textContent = '📋';
+                        btnCopiarEndereco.textContent = 'COPIAR 📋';
                     }, 1200);
                 });
             }
