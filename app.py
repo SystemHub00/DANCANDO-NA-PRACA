@@ -257,7 +257,7 @@ TEMPLATE_WIZARD = r'''
                 <section class="wizard-panel" data-step="index">
                     <div class="hero-grid"><div class="hero-card">
                         <span class="hero-pill">DAN&#199;ANDO NA PRA&#199;A</span>
-                        <h1 class="hero-title">EVENTS DE DAN&#199;A GRATUITOS NA ILHA DO GOVERNADOR</h1>
+                        <h1 class="hero-title">EVENTS DE DAN&#199;A GRATUITOS</h1>
                         <p class="hero-subtitle">Venha dan&#231;ar e se qualificar com atividades gratuitas nas pra&#231;as e espa&#231;os culturais da Ilha do Governador.</p>
                         <div class="hero-highlights">
                             <div class="hero-highlight">
