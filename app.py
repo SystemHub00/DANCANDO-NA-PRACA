@@ -24,19 +24,67 @@ VALID_DDDS = {
     "91", "92", "93", "94", "95", "96", "97", "98", "99",
 }
 
+# Ordenado por data de início (mais próximo primeiro)
 COURSE_OPTIONS = [
     {
         "id": "1",
-        "local": "PRA\u00c7A DO IATE - EM FRENTE \u00c0 MAJESTOSA",
+        "local": "ESPA\u00c7O LEANDRO AZEVEDO",
+        "curso": "PROGRESS\u00c3O PEDAG\u00d3GICA NO ENSINO DE SAMBA DE GAFIEIRA",
+        "turma": "PROGRESS\u00c3O PEDAG\u00d3GICA NO ENSINO DE SAMBA DE GAFIEIRA",
+        "dias_aula": "Sexta",
+        "horario": "18h30",
+        "data_inicio": "18/09/2026",
+        "encerramento": "18/09/2026",
+        "endereco_curso": "\U0001f4cdRua Fernando de Azevedo 45 Portuguesa, Ilha do Governador",
+    },
+    {
+        "id": "2",
+        "local": "CORREDOR ESPORTIVO",
         "curso": "DAN\u00c7A",
-        "turma": "AUL\u00c3O DE TODOS OS RITMOS COM LUCAS MONTEIRO",
+        "turma": "DAN\u00c7A",
         "dias_aula": "Domingo",
         "horario": "17h",
-        "data_inicio": "26/07/2026",
-        "encerramento": "26/07/2026",
-        "endereco_curso": "\U0001f4cdRua Cambaúba, Jardim Guanabara - Em frente \u00e0 Majestosa",
+        "data_inicio": "13/09/2026",
+        "encerramento": "13/09/2026",
+        "endereco_curso": "\U0001f4cdAv do Magist\u00e9rio pr\u00f3ximo ao n\u00famero 212, Moner\u00f3 - Ilha do Governador",
+    },
+    {
+        "id": "3",
+        "local": "PRA\u00c7A DO IATE - MAJESTOSA",
+        "curso": "DAN\u00c7A",
+        "turma": "DAN\u00c7A",
+        "dias_aula": "Domingo",
+        "horario": "17h",
+        "data_inicio": "27/09/2026",
+        "encerramento": "27/09/2026",
+        "endereco_curso": "\U0001f4cdRua Camba\u00faba, em frente \u00e0 Majestosa, Jardim Guanabara - Ilha do Governador",
+    },
+    {
+        "id": "4",
+        "local": "ESPA\u00c7O LEANDRO AZEVEDO",
+        "curso": "PROGRESS\u00c3O PEDAG\u00d3GICA NO ENSINO DE FORR\u00d3",
+        "turma": "PROGRESS\u00c3O PEDAG\u00d3GICA NO ENSINO DE FORR\u00d3",
+        "dias_aula": "Sexta",
+        "horario": "18h30",
+        "data_inicio": "25/09/2026",
+        "encerramento": "25/09/2026",
+        "endereco_curso": "\U0001f4cdRua Fernando de Azevedo 45 Portuguesa, Ilha do Governador",
+    },
+    {
+        "id": "5",
+        "local": "ESTÁCIO DE SÁ — SALA DE AULÕES",
+        "curso": "PALESTRA DE FINANÇAS E CARREIRA",
+        "turma": "PALESTRA DE FINANÇAS E CARREIRA",
+        "dias_aula": "Sábado",
+        "horario": "10h às 13h",
+        "data_inicio": "12/09/2026",
+        "encerramento": "12/09/2026",
+        "endereco_curso": "📍Estrada do Galeão, 5800 - bloco 2 - Galeão, Rio de Janeiro - RJ, 21941-352",
     },
 ]
+
+# Reordenado por data (12/09 → 13/09 → 18/09 → 25/09 → 27/09)
+COURSE_OPTIONS = sorted(COURSE_OPTIONS, key=lambda x: datetime.strptime(x["data_inicio"], "%d/%m/%Y"))
 
 COURSE_OPTIONS_BY_ID = {option["id"]: option for option in COURSE_OPTIONS}
 COURSE_INFO = COURSE_OPTIONS[0]
@@ -63,6 +111,7 @@ def fill_form_data_from_option(form_data, option):
     form_data["endereco_curso"] = option["endereco_curso"]
 
 TEMPLATE_WIZARD = r'''
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -208,13 +257,16 @@ TEMPLATE_WIZARD = r'''
                 <section class="wizard-panel" data-step="index">
                     <div class="hero-grid"><div class="hero-card">
                         <span class="hero-pill">DAN&#199;ANDO NA PRA&#199;A</span>
-                        <h1 class="hero-title">AUL&#195;O DE TODOS OS RITMOS COM LUCAS MONTEIRO</h1>
-                        <p class="hero-subtitle">Abertura com Aul&#227;o de Charme</p>
+                        <h1 class="hero-title">EVENTS DE DAN&#199;A GRATUITOS NA ILHA DO GOVERNADOR</h1>
+                        <p class="hero-subtitle">Venha dan&#231;ar e se qualificar com atividades gratuitas nas pra&#231;as e espa&#231;os culturais da Ilha do Governador.</p>
                         <div class="hero-highlights">
                             <div class="hero-highlight">
-                                <strong>ATIVIDADE DISPON&#205;VEL:</strong>
+                                <strong>ATIVIDADES DISPON&#205;VEIS:</strong>
                                 <div class="cursos-lista">
-                                    <span class="curso-tag">&#128218; Dan&#231;a</span>
+                                    <span class="curso-tag">&#128181; Palestra de Finan&#231;as e Carreira</span>
+                                    <span class="curso-tag">&#128131; Dan&#231;a</span>
+                                    <span class="curso-tag">&#127926; Progress&#227;o Pedag&#243;gica no Ensino de Samba de Gafieira</span>
+                                    <span class="curso-tag">&#127926; Progress&#227;o Pedag&#243;gica no Ensino de Forr&#243;</span>
                                 </div>
                             </div>
                             <div class="hero-highlight">
@@ -222,6 +274,9 @@ TEMPLATE_WIZARD = r'''
                                 <div class="benefits-slider" data-benefits-slider>
                                     <div class="benefits-viewport">
                                         <div class="benefit-slide ativo">100% Gratuito</div>
+                                        <div class="benefit-slide">&#127891; Atividades com professores qualificados</div>
+                                        <div class="benefit-slide">&#128150; Dan&#231;a, cultura e lazer para toda a comunidade</div>
+                                        <div class="benefit-slide">&#128205; V&#225;rios locais na Ilha do Governador</div>
                                     </div>
                                     <div class="benefits-controls">
                                         <button type="button" class="benefits-nav" data-benefits-prev aria-label="Benef&#237;cio anterior">&#8249;</button>
@@ -231,11 +286,13 @@ TEMPLATE_WIZARD = r'''
                                 </div>
                             </div>
                             <div class="hero-highlight">
-                                <strong>INFORMA&#199;&#213;ES</strong>
-                                &#128197;26/07 &#192;S 17h, DOMINGO<br>
-                                &#128226;EVENTO GRATUITO<br>
-                                &#128150; AUL&#195;O DE TODOS OS RITMOS<br>
-                                &#9888;&#65039;EM CASO DE CHUVA SER&#193; CANCELADO
+                                <strong>PR&#211;XIMOS EVENTOS</strong>
+                                  &#128197; 12/09 (S&#225;b) &#8594; Palestra de Finan&#231;as e Carreira · Est&#225;cio de S&#225; · 10h–13h<br>
+              &#128197; 13/09 (Dom) &#8594; Dan&#231;a · Corredor Esportivo · 17h<br>
+                                &#128197; 18/09 (Sex) &#8594; Samba de Gafieira · Espa&#231;o Leandro Azevedo · 18h30<br>
+                                &#128197; 25/09 (Sex) &#8594; Forr&#243; · Espa&#231;o Leandro Azevedo · 18h30<br>
+                                &#128197; 27/09 (Dom) &#8594; Dan&#231;a · Pra&#231;a do Iate · 17h<br>
+                                &#9888;&#65039; Em caso de chuva ser&#225; cancelado
                             </div>
                         </div>
                         <div class="panel-actions">
@@ -266,11 +323,11 @@ TEMPLATE_WIZARD = r'''
                 <!-- PASSO 3 -->
                 <section class="wizard-panel" data-step="escolher">
                     <div class="step-card">
-                        <h2 class="panel-title">Informa&#231;&#245;es do evento</h2>
+                        <h2 class="panel-title">Escolha o evento</h2>
                         <div class="step-grid step-grid--stacked">
-                            <div class="form-group"><label for="local">Local *</label><select id="local" name="opcao_id"><option value="" {% if not form_data.get('opcao_id') %}selected{% endif %}>Selecione um local</option>{% for option in course_options %}<option value="{{ option.id }}" {% if form_data.get('opcao_id') == option.id %}selected{% endif %}>{{ option.local }}</option>{% endfor %}</select><div class="balao-erro" id="opcao_id-error" {% if not errors.get('opcao_id') %}hidden{% endif %}>{{ errors.get('opcao_id', '') }}</div></div>
-                            <div class="form-group"><label for="curso">ATIVIDADE *</label><input type="text" id="curso" name="curso" class="readonly-field" readonly value="{{ form_data.get('curso', '') }}"></div>
-                            <div class="form-group full"><label for="turma">EVENTO *</label><input type="text" id="turma" name="turma" class="readonly-field" readonly value="{{ form_data.get('turma', '') }}"></div>
+                            <div class="form-group full"><label for="local">Evento *</label><select id="local" name="opcao_id"><option value="" {% if not form_data.get('opcao_id') %}selected{% endif %}>Selecione um evento</option>{% for option in course_options %}<option value="{{ option.id }}" {% if form_data.get('opcao_id') == option.id %}selected{% endif %}>{{ option.data_inicio }} &#8594; {{ option.curso }} &middot; {{ option.local }}</option>{% endfor %}</select><div class="balao-erro" id="opcao_id-error" {% if not errors.get('opcao_id') %}hidden{% endif %}>{{ errors.get('opcao_id', '') }}</div></div>
+                            <div class="form-group full"><label for="curso">ATIVIDADE</label><input type="text" id="curso" name="curso" class="readonly-field" readonly value="{{ form_data.get('curso', '') }}"></div>
+                            <div class="form-group full"><label for="turma">EVENTO</label><input type="text" id="turma" name="turma" class="readonly-field" readonly value="{{ form_data.get('turma', '') }}"></div>
                             <div class="form-group"><label for="dias_aula">DIA</label><input type="text" id="dias_aula" name="dias_aula" class="readonly-field" readonly value="{{ form_data.get('dias_aula', '') }}"></div>
                             <div class="form-group"><label for="horario">HOR&#193;RIO</label><input type="text" id="horario" name="horario" class="readonly-field" readonly value="{{ form_data.get('horario', '') }}"></div>
                             <div class="form-group"><label for="data_inicio">DATA</label><input type="text" id="data_inicio" name="data_inicio" class="readonly-field" readonly value="{{ form_data.get('data_inicio', '') }}"></div>
@@ -314,7 +371,7 @@ TEMPLATE_WIZARD = r'''
                                 <div style="margin-bottom:10px;color:#a14f45;font-size:0.98rem;text-align:left;"><strong>Elegibilidade:</strong> Este evento &#233; destinado a pessoas interessadas em dan&#231;a que residem na Ilha do Governador ou regi&#227;o.</div>
                                 <label class="review-check" for="confirma_dados">
                                     <input type="checkbox" id="confirma_dados" name="confirma_dados" value="sim" {% if form_data.get('confirma_dados') %}checked{% endif %}>
-                                    <span>Confirmo que resido na Ilha do Governador ou regi&#227;o e tenho interesse em participar do evento.<br>Todas as informa&#231;&#245;es fornecidas s&#227;o verdadeiras e estou de acordo com os termos de participa&#231;&#227;o.<br>Autorizo o uso dos meus dados para fins de inscri&#231;&#227;o e contato relacionado ao curso.<br>Tamb&#233;m autorizo o uso da minha imagem para divulga&#231;&#227;o nos canais de comunica&#231;&#227;o e redes sociais do projeto e da Prefeitura do Rio de Janeiro.</span>
+                                    <span>Confirmo que resido na Ilha do Governador ou regi&#227;o e tenho interesse em participar do evento.<br>Todas as informa&#231;&#245;es fornecidas s&#227;o verdadeiras e estou de acordo com os termos de participa&#231;&#227;o.<br>Autorizo o uso dos meus dados para fins de inscri&#231;&#227;o e contato relacionado ao evento.<br>Tamb&#233;m autorizo o uso da minha imagem para divulga&#231;&#227;o nos canais de comunica&#231;&#227;o e redes sociais do projeto e da Prefeitura do Rio de Janeiro.</span>
                                 </label>
                                 <div style="margin-top:10px;"><strong>Ao confirmar voc&#234; declara a ci&#234;ncia de que:</strong><ul><li>O evento &#233; totalmente gratuito</li><li>Em caso de chuva ser&#225; cancelado</li><li>Os dados ser&#227;o usados apenas para inscri&#231;&#227;o</li></ul></div>
                                 <div class="balao-erro" id="confirma_dados-error" {% if not errors.get('confirma_dados') %}hidden{% endif %}>{{ errors.get('confirma_dados', '') }}</div>
@@ -342,12 +399,12 @@ TEMPLATE_WIZARD = r'''
             const courseOptionsById=Object.fromEntries(courseOptions.map(function(o){return[String(o.id),o];}));
             const nomeInput=document.getElementById('nome'),generoInput=document.getElementById('genero'),cpfInput=document.getElementById('cpf'),nascimentoInput=document.getElementById('nascimento'),whatsappInput=document.getElementById('whatsapp'),cepInput=document.getElementById('cep'),bairroInput=document.getElementById('bairro'),emailInput=document.getElementById('email');
             const localInput=document.getElementById('local'),cursoInput=document.getElementById('curso'),turmaInput=document.getElementById('turma'),diasAulaInput=document.getElementById('dias_aula'),horarioInput=document.getElementById('horario'),dataInicioInput=document.getElementById('data_inicio'),encerramentoInput=document.getElementById('encerramento'),enderecoInput=document.getElementById('endereco_curso'),confirmaDadosInput=document.getElementById('confirma_dados'),btnCopiarEndereco=document.getElementById('btn-copiar-endereco');
-            function somenteDigitos(v){return(v||''  ).replace(/\D/g,'');}
+            function somenteDigitos(v){return(v||'').replace(/\D/g,'');}
             function mostrarPasso(step){panels.forEach(function(p){p.classList.toggle('ativo',p.dataset.step===step);});labels.forEach(function(l){l.classList.toggle('ativo',l.dataset.stepLabel===step);});fill.style.width=(progressByStep[step]||25)+'%';window.scrollTo({top:0,behavior:'smooth'});}
             function setError(id,msg){const f=document.getElementById(id),e=document.getElementById(id+'-error');if(f)f.classList.toggle('erro-campo',Boolean(msg));if(e){e.textContent=msg||'';e.hidden=!msg;}}
             function validarCPF(cpf){const d=somenteDigitos(cpf);if(d.length!==11||/^(\d)\1+$/.test(d))return false;let s=0,g;for(let i=0;i<9;i++)s+=Number(d[i])*(10-i);g=(s*10)%11;if(g===10)g=0;if(g!==Number(d[9]))return false;s=0;for(let i=0;i<10;i++)s+=Number(d[i])*(11-i);g=(s*10)%11;if(g===10)g=0;return g===Number(d[10]);}
-            function validarEmail(e){return/^[a-zA-Z0-9_.+-]+@((gmail|hotmail|outlook|yahoo)\.(com|com\.br))$/i.test((e||''  ).trim());}
-            function idadePermitida(v){const p=(v||''  ).split('/');if(p.length!==3)return false;const dia=Number(p[0]),mes=Number(p[1])-1,ano=Number(p[2]);const d=new Date(ano,mes,dia);if(isNaN(d.getTime())||d.getDate()!==dia||d.getMonth()!==mes||d.getFullYear()!==ano)return false;const h=new Date();let i=h.getFullYear()-d.getFullYear();if(h.getMonth()-d.getMonth()<0||(h.getMonth()===d.getMonth()&&h.getDate()<d.getDate()))i--;return i>=18&&i<=90;}
+            function validarEmail(e){return/^[a-zA-Z0-9_.+-]+@((gmail|hotmail|outlook|yahoo)\.(com|com\.br))$/i.test((e||'').trim());}
+            function idadePermitida(v){const p=(v||'').split('/');if(p.length!==3)return false;const dia=Number(p[0]),mes=Number(p[1])-1,ano=Number(p[2]);const d=new Date(ano,mes,dia);if(isNaN(d.getTime())||d.getDate()!==dia||d.getMonth()!==mes||d.getFullYear()!==ano)return false;const h=new Date();let i=h.getFullYear()-d.getFullYear();if(h.getMonth()-d.getMonth()<0||(h.getMonth()===d.getMonth()&&h.getDate()<d.getDate()))i--;return i>=18&&i<=90;}
             function validarDDD(w){const d=somenteDigitos(w);if(d.length<11)return false;return['11','12','13','14','15','16','17','18','19','21','22','24','27','28','31','32','33','34','35','37','38','41','42','43','44','45','46','47','48','49','51','53','54','55','61','62','63','64','65','66','67','68','69','71','73','74','75','77','79','81','82','83','84','85','86','87','88','89','91','92','93','94','95','96','97','98','99'].includes(d.slice(0,2));}
             function mascCPF(){let v=somenteDigitos(cpfInput.value).slice(0,11);if(v.length>9)v=v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');else if(v.length>6)v=v.replace(/(\d{3})(\d{3})(\d{1,3})/,'$1.$2.$3');else if(v.length>3)v=v.replace(/(\d{3})(\d{1,3})/,'$1.$2');cpfInput.value=v;}
             function mascNasc(){let v=somenteDigitos(nascimentoInput.value).slice(0,8);if(v.length>4)v=v.replace(/(\d{2})(\d{2})(\d{1,4})/,'$1/$2/$3');else if(v.length>2)v=v.replace(/(\d{2})(\d{1,2})/,'$1/$2');nascimentoInput.value=v;}
@@ -364,7 +421,7 @@ TEMPLATE_WIZARD = r'''
             function vBairro(){const v=bairroInput.value.trim();if(!v){setError('bairro','Informe o bairro.');return false;}if(v.length>40){setError('bairro','M\u00e1ximo 40 caracteres.');return false;}setError('bairro','');return true;}
             function vEmail(){if(!validarEmail(emailInput.value)){setError('email','Digite um e-mail v\u00e1lido (Gmail, Hotmail, Outlook ou Yahoo).');return false;}setError('email','');return true;}
             function validarPassoDados(){const ch=[{ok:vNome(),f:nomeInput},{ok:vGenero(),f:generoInput},{ok:vCPF(),f:cpfInput},{ok:vNasc(),f:nascimentoInput},{ok:vWpp(),f:whatsappInput},{ok:vCep(),f:cepInput},{ok:vBairro(),f:bairroInput},{ok:vEmail(),f:emailInput}];const first=ch.find(function(c){return!c.ok;});if(first){first.f.focus();return false;}return true;}
-            function validarPassoEscolher(){if(!courseOptionsById[String(localInput.value)]){setError('opcao_id','Selecione um local v\u00e1lido.');localInput.focus();return false;}setError('opcao_id','');return true;}
+            function validarPassoEscolher(){if(!courseOptionsById[String(localInput.value)]){setError('opcao_id','Selecione um evento v\u00e1lido.');localInput.focus();return false;}setError('opcao_id','');return true;}
             function validarPassoRevisao(){const c=document.getElementById('confirma_dados');if(!c.checked){setError('confirma_dados','Confirme os dados para finalizar.');c.focus();return false;}setError('confirma_dados','');return true;}
             async function buscarBairro(){const l=somenteDigitos(cepInput.value);if(l.length!==8)return;try{const r=await fetch('https://viacep.com.br/ws/'+l+'/json/');const d=await r.json();if(!d.erro&&d.bairro){bairroInput.value=d.bairro;vBairro();syncReview();}}catch(e){console.error(e);}}
             document.querySelectorAll('[data-next]').forEach(function(btn){btn.addEventListener('click',function(){const t=btn.dataset.next;if(t==='escolher'&&!validarPassoDados())return;if(t==='revisao'&&!validarPassoEscolher())return;syncReview();mostrarPasso(t);});});
@@ -380,7 +437,7 @@ TEMPLATE_WIZARD = r'''
             localInput.addEventListener('change',function(){aplicarOpcaoCurso(localInput.value);syncReview();});
             document.getElementById('confirma_dados').addEventListener('change',function(){if(this.checked)setError('confirma_dados','');});
             ['nome','genero','whatsapp','cep','bairro','email','local','curso','turma','dias_aula','horario','data_inicio','encerramento','endereco_curso','como_conheceu'].forEach(function(id){const f=document.getElementById(id);if(f){f.addEventListener('input',syncReview);f.addEventListener('change',syncReview);}});
-            if(btnCopiarEndereco&&enderecoInput){btnCopiarEndereco.addEventListener('click',async function(){try{await navigator.clipboard.writeText(enderecoInput.value);btnCopiarEndereco.textContent='COPIADO \u2705';}catch(e){enderecoInput.select();document.execCommand('copy');btnCopiarEndereco.textContent='COPIADO \u2705';}setTimeout(function(){btnCopiarEndereco.textContent='COPIAR &#128203;';},1200);});}
+            if(btnCopiarEndereco&&enderecoInput){btnCopiarEndereco.addEventListener('click',async function(){try{await navigator.clipboard.writeText(enderecoInput.value);btnCopiarEndereco.textContent='COPIADO \u2705';}catch(e){enderecoInput.select();document.execCommand('copy');btnCopiarEndereco.textContent='COPIADO \u2705';}setTimeout(function(){btnCopiarEndereco.textContent='COPIAR \uD83D\uDCCB';},1200);});}
             function initBenefitsSlider(slider){const slides=Array.from(slider.querySelectorAll('.benefit-slide')),dotsHost=slider.querySelector('[data-benefits-dots]'),prevBtn=slider.querySelector('[data-benefits-prev]'),nextBtn=slider.querySelector('[data-benefits-next]');if(!slides.length||!dotsHost||!prevBtn||!nextBtn)return;let cur=Math.max(slides.findIndex(function(s){return s.classList.contains('ativo');}),0),timer;const dots=slides.map(function(_,i){const dot=document.createElement('button');dot.type='button';dot.className='benefits-dot';dot.setAttribute('aria-label','Benef\u00edcio '+(i+1));dot.addEventListener('click',function(){show(i);restart();});dotsHost.appendChild(dot);return dot;});function show(i){cur=(i+slides.length)%slides.length;slides.forEach(function(s,j){s.classList.toggle('ativo',j===cur);});dots.forEach(function(d,j){d.classList.toggle('ativo',j===cur);});}function restart(){clearInterval(timer);timer=setInterval(function(){show(cur+1);},3200);}prevBtn.addEventListener('click',function(){show(cur-1);restart();});nextBtn.addEventListener('click',function(){show(cur+1);restart();});slider.addEventListener('mouseenter',function(){clearInterval(timer);});slider.addEventListener('mouseleave',restart);show(cur);restart();}
             Array.from(document.querySelectorAll('[data-benefits-slider]')).forEach(initBenefitsSlider);
             aplicarOpcaoCurso(localInput.value);
@@ -390,9 +447,11 @@ TEMPLATE_WIZARD = r'''
     </script>
 </body>
 </html>
+
 '''
 
 TEMPLATE_CONFIRMACAO = r'''
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -480,6 +539,7 @@ TEMPLATE_CONFIRMACAO = r'''
     </div>
 </body>
 </html>
+
 '''
 
 app = Flask(__name__)
@@ -543,7 +603,7 @@ def validate_form_data(form_data):
     errors = {}
     selected_option = get_course_option(form_data["opcao_id"])
     if not selected_option:
-        errors["opcao_id"] = "Selecione um local v\u00e1lido."
+        errors["opcao_id"] = "Selecione um evento v\u00e1lido."
     nome = form_data["nome"]
     if not nome: errors["nome"] = "Digite seu nome completo."
     elif len(nome) > 50: errors["nome"] = "O nome deve ter no m\u00e1ximo 50 caracteres."
